@@ -24,7 +24,8 @@ for (const w of [1440, 1280, 768, 390, 320]) {
 
 await page.setViewport({ width: 390, height: 800 });
 await page.goto(url, { waitUntil: "load" });
-await page.click('button[aria-label="Открыть меню"]');
+await page.waitForSelector('button[aria-label="Открыть меню"]');
+await page.evaluate(() => document.querySelector('button[aria-label="Открыть меню"]').click());
 await page.waitForSelector('nav[aria-label="Мобильная навигация"]', {
   visible: true,
 });
